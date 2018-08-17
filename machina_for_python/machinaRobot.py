@@ -144,7 +144,7 @@ class MachinaRobot (object):
         self.commands = "Precision({});".format(PrecisionInc) 
         self.runCommands()  
 
-    def PrecisionTo(precisionVal):
+    def precisionTo(precisionVal):
         self.commands = "PrecisionTo({});".format(precisionVal) 
         self.runCommands()  
 
@@ -194,11 +194,11 @@ class MachinaRobot (object):
         self.commands = "WriteAnalog({},{});".format(pin,value) 
         self.runCommands()  
 
-    def ExternalAxis (axisNumber, rxternalAxisInc):
+    def externalAxis (axisNumber, rxternalAxisInc):
         self.commands = "ExternalAxis({},{});".format(axisNumber, rxternalAxisInc) 
         self.runCommands()  
     
-    def ExternalAxisTo (axisNumber, rxternalAxisVal):
+    def externalAxisTo (axisNumber, rxternalAxisVal):
         self.commands = "ExternalAxisTo({},{});".format(axisNumber, rxternalAxisVal) 
         self.runCommands()  
 
