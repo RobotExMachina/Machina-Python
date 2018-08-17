@@ -190,6 +190,5 @@ class MachinaRobot (object):
 		self.runCommands()	
 
 
-a = MachinaRobot()
 
 
