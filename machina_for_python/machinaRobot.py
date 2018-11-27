@@ -1,6 +1,7 @@
 """
 A convinient class of objects to communicate with Machina Bridge
 by Ardavan Bidgoli
+Robotics Fellow at CMU
 WIP
 """
 import websockets
@@ -17,7 +18,10 @@ class MachinaRobot (object):
         # error messages
         self.floatError = " must be a float."
         self.stringError = " must be a string."
-        self.lsitError = " must be a list of strings."
+        self.listError = " must be a list of strings."
+        self.intError = " must be an integer."
+        self.externalAxisError = " must be between 1 and 6."
+
 
     async def sendToBridge(self,address= "", command=""):
         # generic fucntion to communicate with web
@@ -81,17 +85,44 @@ class MachinaRobot (object):
 
 
     def ExternalAxis(self,axisNumber,increment):
+        if self.debug:
+            if not isinstance(axisNumber, int):
+                raise ValueError("axisNumber {}".format(intError))
+
+            if 1> axisNumber or axisNumber >6 :
+                raise ValueError("axisNumber {}".format(externalAxisError))
+
+            if not isinstance(increment, float):
+                raise ValueError("increment {}".format(floatError))
+
         self.commands = "ExternalAxis({},{});".format(axisNumber, increment) 
         self.runCommands()
         return
 
 
     def ExternalAxisTo(self,axisNumber, val):
+        if self.debug:
+            if not isinstance(axisNumber, int):
+                raise ValueError("axisNumber {}".format(intError))
+
+            if 1> axisNumber or axisNumber >6 :
+                raise ValueError("axisNumber {}".format(externalAxisError))
+
+            if not isinstance(val, float):
+                raise ValueError("val {}".format(floatError))
+
         self.commands = "ExternalAxisTo({},{});".format(axisNumber, val) 
         self.runCommands()
         return
 
     def moveTo (self,x,y,z):
+        if self.debug:
+            if not isinstance(x, float):
+                raise ValueError("x {}".format(floatError))
+            if not isinstance(y, float):
+                raise ValueError("y {}".format(floatError))
+            if not isinstance(z, float):
+                raise ValueError("z {}".format(floatError))
         self.commands = "MoveTo({},{},{});".format(x, y, z) 
         self.runCommands()
         return
