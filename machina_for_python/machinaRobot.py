@@ -70,88 +70,12 @@ class MachinaRobot (object):
         return 
 
 
-    def move(self, xInc, yInc, zInc = 0):
-        if self.debug:
-            if not isinstance(xInc, float):
-                raise ValueError("xInc {}".format(floatError))
-            if not isinstance(yInc, float):
-                raise ValueError("yInc {}".format(floatError))
-            if not isinstance(zInc, float):
-                raise ValueError("zInc {}".format(floatError))
-
-        self.commands = "Move({},{},{});".format(xInc, yInc, zInc) 
-        self.runCommands()
-        return
-
-
-    def ExternalAxis(self,axisNumber,increment):
-        if self.debug:
-            if not isinstance(axisNumber, int):
-                raise ValueError("axisNumber {}".format(intError))
-
-            if 1> axisNumber or axisNumber >6 :
-                raise ValueError("axisNumber {}".format(externalAxisError))
-
-            if not isinstance(increment, float):
-                raise ValueError("increment {}".format(floatError))
-
-        self.commands = "ExternalAxis({},{});".format(axisNumber, increment) 
-        self.runCommands()
-        return
-
-
-    def ExternalAxisTo(self,axisNumber, val):
-        if self.debug:
-            if not isinstance(axisNumber, int):
-                raise ValueError("axisNumber {}".format(intError))
-
-            if 1> axisNumber or axisNumber >6 :
-                raise ValueError("axisNumber {}".format(externalAxisError))
-
-            if not isinstance(val, float):
-                raise ValueError("val {}".format(floatError))
-
-        self.commands = "ExternalAxisTo({},{});".format(axisNumber, val) 
-        self.runCommands()
-        return
-
-    def moveTo (self,x,y,z):
-        if self.debug:
-            if not isinstance(x, float):
-                raise ValueError("x {}".format(floatError))
-            if not isinstance(y, float):
-                raise ValueError("y {}".format(floatError))
-            if not isinstance(z, float):
-                raise ValueError("z {}".format(floatError))
-        self.commands = "MoveTo({},{},{});".format(x, y, z) 
-        self.runCommands()
-        return
-
-
-    def transformTo(self,x,y,z,x0,x1,x2,y0,y1,y2):
-        self.commands = "TransformTo({},{},{},{},{},{},{},{},{});".format(x,y,z,x0,x1,x2,y0,y1,y2) 
-        self.runCommands()
-        return
-
-    def rotate(self,x,y,z,angleInc):
-        self.commands = "Rotate({},{},{},{});".format(x,y,z,angleInc) 
-        self.runCommands()
-        return
-
-    def rotateTo(self,x0,x1,x2,y0,y1,y2):
-        self.commands = "RotateTo({},{},{},{},{},{});".format(x0,x1,x2,y0,y1,y2) 
-        self.runCommands()
-        return
-
-    def axes (self,j1,j2,j3,j4,j5,j6):
-        self.commands = "Axes({},{},{},{},{},{});".format(j1,j2,j3,j4,j5,j6) 
-        self.runCommands()
-        return
-
-    def axesTo (self,j1,j2,j3,j4,j5,j6):
-        self.commands = "AxesTo({},{},{},{},{},{});".format(j1,j2,j3,j4,j5,j6) 
-        self.runCommands()
-        return  
+    ##  ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
+    ##  ██╔════╝██╔════╝╚══██╔══╝╚══██╔══╝██║████╗  ██║██╔════╝ ██╔════╝
+    ##  ███████╗█████╗     ██║      ██║   ██║██╔██╗ ██║██║  ███╗███████╗
+    ##  ╚════██║██╔══╝     ██║      ██║   ██║██║╚██╗██║██║   ██║╚════██║
+    ##  ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║
+    ##  ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
 
     def speed(self,speedInc):
         self.commands = "Speed({});".format(speedInc) 
@@ -215,9 +139,108 @@ class MachinaRobot (object):
         return  
 
     def motionMode(self,mode):
+        # motion type should be "linear" or "joint" as string
+        if self.debug:
+            if not isinstance(motionType, string):
+                raise ValueError("motionType {}".format(stringError))  
+
         self.commands = "MotionMode(\"{}\");".format(mode) 
         self.runCommands()
         return  
+
+
+    ##   █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
+    ##  ██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
+    ##  ███████║██║        ██║   ██║██║   ██║██╔██╗ ██║███████╗
+    ##  ██╔══██║██║        ██║   ██║██║   ██║██║╚██╗██║╚════██║
+    ##  ██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
+    ##  ╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
+        
+    def move(self, xInc, yInc, zInc = 0):
+        if self.debug:
+            if not isinstance(xInc, float):
+                raise ValueError("xInc {}".format(floatError))
+            if not isinstance(yInc, float):
+                raise ValueError("yInc {}".format(floatError))
+            if not isinstance(zInc, float):
+                raise ValueError("zInc {}".format(floatError))
+
+        self.commands = "Move({},{},{});".format(xInc, yInc, zInc) 
+        self.runCommands()
+        return
+        
+   def moveTo (self,x,y,z):
+        if self.debug:
+            if not isinstance(x, float):
+                raise ValueError("x {}".format(floatError))
+            if not isinstance(y, float):
+                raise ValueError("y {}".format(floatError))
+            if not isinstance(z, float):
+                raise ValueError("z {}".format(floatError))
+        self.commands = "MoveTo({},{},{});".format(x, y, z) 
+        self.runCommands()
+        return
+
+
+    def externalAxis(self,axisNumber,increment):
+        if self.debug:
+            if not isinstance(axisNumber, int):
+                raise ValueError("axisNumber {}".format(intError))
+
+            if 1> axisNumber or axisNumber >6 :
+                raise ValueError("axisNumber {}".format(externalAxisError))
+
+            if not isinstance(increment, float):
+                raise ValueError("increment {}".format(floatError))
+
+        self.commands = "ExternalAxis({},{});".format(axisNumber, increment) 
+        self.runCommands()
+        return
+
+
+    def externalAxisTo(self,axisNumber, val):
+        if self.debug:
+            if not isinstance(axisNumber, int):
+                raise ValueError("axisNumber {}".format(intError))
+
+            if 1> axisNumber or axisNumber >6 :
+                raise ValueError("axisNumber {}".format(externalAxisError))
+
+            if not isinstance(val, float):
+                raise ValueError("val {}".format(floatError))
+
+        self.commands = "ExternalAxisTo({},{});".format(axisNumber, val) 
+        self.runCommands()
+        return
+
+ 
+
+    def transformTo(self,x,y,z,x0,x1,x2,y0,y1,y2):
+        self.commands = "TransformTo({},{},{},{},{},{},{},{},{});".format(x,y,z,x0,x1,x2,y0,y1,y2) 
+        self.runCommands()
+        return
+
+    def rotate(self,x,y,z,angleInc):
+        self.commands = "Rotate({},{},{},{});".format(x,y,z,angleInc) 
+        self.runCommands()
+        return
+
+    def rotateTo(self,x0,x1,x2,y0,y1,y2):
+        self.commands = "RotateTo({},{},{},{},{},{});".format(x0,x1,x2,y0,y1,y2) 
+        self.runCommands()
+        return
+
+    def axes (self,j1,j2,j3,j4,j5,j6):
+        self.commands = "Axes({},{},{},{},{},{});".format(j1,j2,j3,j4,j5,j6) 
+        self.runCommands()
+        return
+
+    def axesTo (self,j1,j2,j3,j4,j5,j6):
+        self.commands = "AxesTo({},{},{},{},{},{});".format(j1,j2,j3,j4,j5,j6) 
+        self.runCommands()
+        return  
+
+    
 
     def message(self,msg):
         self.commands = "Message(\"{}\");".format(msg) 
@@ -267,12 +290,12 @@ class MachinaRobot (object):
         self.runCommands()
         return
 
-    def externalAxis (self,axisNumber, rxternalAxisInc):
-        self.commands = "ExternalAxis({},{});".format(axisNumber, rxternalAxisInc) 
-        self.runCommands()
-        return  
+    # def externalAxis (self,axisNumber, rxternalAxisInc):
+    #     self.commands = "ExternalAxis({},{});".format(axisNumber, rxternalAxisInc) 
+    #     self.runCommands()
+    #     return  
     
-    def externalAxisTo (self,axisNumber, rxternalAxisVal):
-        self.commands = "ExternalAxisTo({},{});".format(axisNumber, rxternalAxisVal) 
-        self.runCommands()
-        return  
+    # def externalAxisTo (self,axisNumber, rxternalAxisVal):
+    #     self.commands = "ExternalAxisTo({},{});".format(axisNumber, rxternalAxisVal) 
+    #     self.runCommands()
+    #     return  
