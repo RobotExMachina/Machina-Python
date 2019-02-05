@@ -169,7 +169,7 @@ class MachinaRobot (object):
         self.runCommands()
         return
         
-   def moveTo (self,x,y,z):
+    def moveTo (self,x,y,z):
         if self.debug:
             if not isinstance(x, float):
                 raise ValueError("x {}".format(floatError))
