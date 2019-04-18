@@ -48,16 +48,17 @@ class MachinaRobot (object):
 
     async def sendQueueToBridge(self,address= "", commands= ""):
         # generic function to communicate with web
-        if not isinstance(command, str) :
-            raise ValueError("command must be an string object.")
-            
-        if not isinstance(address, str) :
-            raise ValueError("address must be an string object i.e.: \"ws://127.0.0.1:6999/Bridge\"")
-
         if address == "": 
             address = self.address
         if commands == "":
             commands = self.commands
+            
+        if not isinstance(commands, list) :
+            raise ValueError("commands must be a list object.")
+            
+        if not isinstance(address, str) :
+            raise ValueError("address must be an string object i.e.: \"ws://127.0.0.1:6999/Bridge\"")
+
 
         print("sending to bridge...")
 
@@ -100,10 +101,8 @@ class MachinaRobot (object):
             else:
                 raise ValueError("command {}".format(self.listError))
 
-        try:
-            asyncio.new_event_loop().run_until_complete(self.sendQueueToBridge())
-        except:
-            print ("FAILED TO RUN STACKED COMMANDS")
+        asyncio.new_event_loop().run_until_complete(self.sendQueueToBridge())
+
         return
 
     ##  ███████╗███████╗████████╗████████╗██╗███╗   ██╗ ██████╗ ███████╗
@@ -341,7 +340,7 @@ class MachinaRobot (object):
         self.runCommand()
         return
 
- def queueExternalAxisTo(self,axisNumber, val):
+    def queueExternalAxisTo(self,axisNumber, val):
         if self.debug:
             if not isinstance(axisNumber, int):
                 raise ValueError("axisNumber {}".format(intError))
@@ -504,4 +503,4 @@ class MachinaRobot (object):
     # def externalAxisTo (self,axisNumber, rxternalAxisVal):
     #     self.command = "ExternalAxisTo({},{});".format(axisNumber, rxternalAxisVal) 
     #     self.runCommand()
-    #     return
+    #     return  
