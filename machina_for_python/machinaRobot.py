@@ -77,68 +77,68 @@ class MachinaRobot (object):
     ##  ███████║███████╗   ██║      ██║   ██║██║ ╚████║╚██████╔╝███████║
     ##  ╚══════╝╚══════╝   ╚═╝      ╚═╝   ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
 
-    def speed(self,speedInc):
+    def Speed(self,speedInc):
         self.commands = "Speed({});".format(speedInc) 
         self.runCommands()
         return  
 
-    def speedTo(self,speedVal):
+    def SpeedTo(self,speedVal):
         self.commands = "SpeedTo({});".format(speedVal) 
         self.runCommands()
         return  
 
-    def acceleration(self,accelerationInc):
+    def Acceleration(self,accelerationInc):
         self.commands = "Acceleration({});".format(accelerationInc) 
         self.runCommands()
         return  
 
-    def accelerationTo(self,accelerationVal):
+    def AccelerationTo(self,accelerationVal):
         self.commands = "AccelerationTo({});".format(accelerationVal) 
         self.runCommands()
         return    
 
 
-    def rotationSpeed(self,rotationSpeedInc):
-        self.commands = "RotationSpeed({});".format(rotationSpeedInc) 
-        self.runCommands()
-        return  
+    # def rotationSpeed(self,rotationSpeedInc):
+    #     self.commands = "RotationSpeed({});".format(rotationSpeedInc) 
+    #     self.runCommands()
+    #     return  
 
-    def rotationSpeedTo(self,rotationSpeedVal):
-        self.commands = "RotationSpeedTo({});".format(rotationSpeedVal) 
-        self.runCommands()
-        return  
+    # def rotationSpeedTo(self,rotationSpeedVal):
+    #     self.commands = "RotationSpeedTo({});".format(rotationSpeedVal) 
+    #     self.runCommands()
+    #     return  
 
-    def jointSpeed(self,jointSpeedInc):
-        self.commands = "JointSpeed({});".format(jointSpeedInc) 
-        self.runCommands()
-        return  
+    # def jointSpeed(self,jointSpeedInc):
+    #     self.commands = "JointSpeed({});".format(jointSpeedInc) 
+    #     self.runCommands()
+    #     return  
 
-    def jointSpeedTo(self,jointSpeedVal):
-        self.commands = "JointSpeedTo({});".format(jointSpeedVal) 
-        self.runCommands()
-        return  
+    # def jointSpeedTo(self,jointSpeedVal):
+    #     self.commands = "JointSpeedTo({});".format(jointSpeedVal) 
+    #     self.runCommands()
+    #     return  
 
-    def jointAcceleration(self,jointAccelerationInc):
-        self.commands = "JointAcceleration({});".format(jointAccelerationInc) 
-        self.runCommands()
-        return  
+    # def jointAcceleration(self,jointAccelerationInc):
+    #     self.commands = "JointAcceleration({});".format(jointAccelerationInc) 
+    #     self.runCommands()
+    #     return  
 
-    def jointAccelerationTo(self,jointAccelerationVal):
-        self.commands = "JointAccelerationTo({});".format(jointAccelerationVal) 
-        self.runCommands()
-        return  
+    # def jointAccelerationTo(self,jointAccelerationVal):
+    #     self.commands = "JointAccelerationTo({});".format(jointAccelerationVal) 
+    #     self.runCommands()
+    #     return  
 
-    def precision(self,precisionInc):
+    def Precision(self,precisionInc):
         self.commands = "Precision({});".format(PrecisionInc) 
         self.runCommands()
         return  
 
-    def precisionTo(self,precisionVal):
+    def PrecisionTo(self,precisionVal):
         self.commands = "PrecisionTo({});".format(precisionVal) 
         self.runCommands()
         return  
 
-    def motionMode(self,mode):
+    def MotionMode(self,mode):
         # motion type should be "linear" or "joint" as string
         if self.debug:
             if not isinstance(motionType, string):
@@ -148,6 +148,15 @@ class MachinaRobot (object):
         self.runCommands()
         return  
 
+    def PushSettings(self):
+        self.commands = "PushSettings();" 
+        self.runCommands()
+        return  
+
+    def PopSettings(self):
+        self.commands = "PopSettings();" 
+        self.runCommands()
+        return 
 
     ##   █████╗  ██████╗████████╗██╗ ██████╗ ███╗   ██╗███████╗
     ##  ██╔══██╗██╔════╝╚══██╔══╝██║██╔═══██╗████╗  ██║██╔════╝
@@ -156,7 +165,7 @@ class MachinaRobot (object):
     ##  ██║  ██║╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║███████║
     ##  ╚═╝  ╚═╝ ╚═════╝   ╚═╝   ╚═╝ ╚═════╝ ╚═╝  ╚═══╝╚══════╝
         
-    def move(self, xInc, yInc, zInc = 0):
+    def Move(self, xInc, yInc, zInc = 0):
         if self.debug:
             if not isinstance(xInc, float):
                 raise ValueError("xInc {}".format(floatError))
@@ -169,7 +178,7 @@ class MachinaRobot (object):
         self.runCommands()
         return
         
-    def moveTo (self,x,y,z):
+    def MoveTo (self,x,y,z):
         if self.debug:
             if not isinstance(x, float):
                 raise ValueError("x {}".format(floatError))
@@ -182,7 +191,7 @@ class MachinaRobot (object):
         return
 
 
-    def externalAxis(self,axisNumber,increment):
+    def ExternalAxis(self,axisNumber,increment):
         if self.debug:
             if not isinstance(axisNumber, int):
                 raise ValueError("axisNumber {}".format(intError))
@@ -197,8 +206,7 @@ class MachinaRobot (object):
         self.runCommands()
         return
 
-
-    def externalAxisTo(self,axisNumber, val):
+    def ExternalAxisTo(self,axisNumber, val):
         if self.debug:
             if not isinstance(axisNumber, int):
                 raise ValueError("axisNumber {}".format(intError))
@@ -213,56 +221,52 @@ class MachinaRobot (object):
         self.runCommands()
         return
 
- 
-
-    def transformTo(self,x,y,z,x0,x1,x2,y0,y1,y2):
+    def TransformTo(self,x,y,z,x0,x1,x2,y0,y1,y2):
         self.commands = "TransformTo({},{},{},{},{},{},{},{},{});".format(x,y,z,x0,x1,x2,y0,y1,y2) 
         self.runCommands()
         return
 
-    def rotate(self,x,y,z,angleInc):
+    def Rotate(self,x,y,z,angleInc):
         self.commands = "Rotate({},{},{},{});".format(x,y,z,angleInc) 
         self.runCommands()
         return
 
-    def rotateTo(self,x0,x1,x2,y0,y1,y2):
+    def RotateTo(self,x0,x1,x2,y0,y1,y2):
         self.commands = "RotateTo({},{},{},{},{},{});".format(x0,x1,x2,y0,y1,y2) 
         self.runCommands()
         return
 
-    def axes (self,j1,j2,j3,j4,j5,j6):
+    def Axes (self,j1,j2,j3,j4,j5,j6):
         self.commands = "Axes({},{},{},{},{},{});".format(j1,j2,j3,j4,j5,j6) 
         self.runCommands()
         return
 
-    def axesTo (self,j1,j2,j3,j4,j5,j6):
+    def AxesTo (self,j1,j2,j3,j4,j5,j6):
         self.commands = "AxesTo({},{},{},{},{},{});".format(j1,j2,j3,j4,j5,j6) 
         self.runCommands()
         return  
 
     
 
-    def message(self,msg):
+    def Message(self,msg):
         self.commands = "Message(\"{}\");".format(msg) 
         self.runCommands()
         return  
 
-    def wait(self,millis):
+    def Wait(self,millis):
         self.commands = "Wait({});".format(millis) 
         self.runCommands()
         return  
 
-    def pushSettings(self):
-        self.commands = "PushSettings();" 
-        self.runCommands()
-        return  
+    # ████████╗ ██████╗  ██████╗ ██╗     
+    # ╚══██╔══╝██╔═══██╗██╔═══██╗██║     
+    #    ██║   ██║   ██║██║   ██║██║     
+    #    ██║   ██║   ██║██║   ██║██║     
+    #    ██║   ╚██████╔╝╚██████╔╝███████╗
+    #    ╚═╝    ╚═════╝  ╚═════╝ ╚══════╝
+    #                                    
 
-    def popSettings(self):
-        self.commands = "PopSettings();" 
-        self.runCommands()
-        return  
-
-    def toolCreate(self,name, x, y, z, x0, x1, x2, y0, y1, y2, weight, cogX, cogY, cogZ):
+    def ToolCreate(self,name, x, y, z, x0, x1, x2, y0, y1, y2, weight, cogX, cogY, cogZ):
         self.commands =   "Tool.create(\"{}\",{},{},{},{},{},{},{},{},{},{},{},{},{},);".format(name,
                                                                                                 weight, 
                                                                                                 cogX, cogY, cogZ)
@@ -270,32 +274,22 @@ class MachinaRobot (object):
         return
 
 
-    def attach(self,name):
+    def Attach(self,name):
         self.commands = "Attach(\"{}\");".format(name) 
         self.runCommands()
         return  
 
-    def detach(self):
+    def Detach(self):
         self.commands = "Detach();" 
         self.runCommands()
         return 
 
-    def writeDigital(self,pin,on):
+    def WriteDigital(self,pin,on):
         self.commands = "WriteDigital({},{});".format(pin,on) 
         self.runCommands()
         return 
 
-    def writeAnalog(self,pin,value):
+    def WriteAnalog(self,pin,value):
         self.commands = "WriteAnalog({},{});".format(pin,value) 
         self.runCommands()
         return
-
-    # def externalAxis (self,axisNumber, rxternalAxisInc):
-    #     self.commands = "ExternalAxis({},{});".format(axisNumber, rxternalAxisInc) 
-    #     self.runCommands()
-    #     return  
-    
-    # def externalAxisTo (self,axisNumber, rxternalAxisVal):
-    #     self.commands = "ExternalAxisTo({},{});".format(axisNumber, rxternalAxisVal) 
-    #     self.runCommands()
-    #     return  
